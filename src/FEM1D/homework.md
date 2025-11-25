@@ -33,20 +33,20 @@ Compute the integrals over each element to obtain the local system matrices.
 Assemble the system matrix by combining the local system matrices. You should obtain a 4x4 matrix.
 
 ## Problem 5:
-Apply the boundary conditions to obtain a 3x3 system matrix. Solve the resulting linear system to obtain the solution vector.
+Enforce the boundary conditions to obtain a 3x3 system matrix. Solve the resulting linear system to obtain the solution vector.
 
 ## Problem 6:
 Let's code it up! Just like how we defined the `Laplace` operator in the tutorial, define a struct with the name of this ODE. 
 The value $k$ can be stored as a constant. 
 Also define its corresponding `integrand` function.
 
-Note: Here you will need to perform the integration over each element using numerical integration using Gaussian quadrature. What order of quadrature will you need to use?
+**Note: Here you will need to perform the integration over each element using numerical integration using Gaussian quadrature. What order of quadrature will you need to use?**
 
 ## Problem 7:
-Just like we did in the tutorial, create the mesh, define the trial and test functions using lagrange basis functions of order 1, and assemble the system matrix. Apply the boundary conditions and just like in the analytical solution the Neumann boundary condition should be handled as a vector on the right hand side.
+Just like we did in the tutorial, create the mesh, define the trial and test functions using lagrange basis functions of order 1, and assemble the system matrix. Enforce the boundary conditions and just like in the analytical solution the Neumann boundary condition should be handled as a vector on the right hand side.
 
 ## Problem 8:
 
 Finally, derive, implement, and compare with the analytical solution. Increase k to 400. What do you observe? If the error is large, what could be the reason?
 
-Now you can use FEM in you daily life! :)
+You have learned to solve a boundary value problems with second order ordinary differential equations using FEM1D with mixed boundary conditions! :) Not to mention a lot of practice with Julia coding as well.

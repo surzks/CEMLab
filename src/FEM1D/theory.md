@@ -81,7 +81,7 @@ $$ \mathcal{S}_{ij} = \int_0^1 \varepsilon(x) \nabla \phi_j(x) \nabla \phi_i(x) 
 
 The assembly process involves iterating over each element in the mesh, computing the local matrix for that element (cell interactions), and then adding it to the global system matrix.
 
-## Applying Boundary Conditions
+## Enforcing Boundary Conditions
 To incorporate the Dirichlet boundary conditions into the system, we modify the system matrix and the right-hand side vector. This typically involves setting the rows and columns corresponding to the boundary nodes to enforce the specified values of $u(0)$ and $u(1)$. This splits the solution into known and unknown parts, which in a block form can be represented as
 
 $$
