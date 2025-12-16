@@ -6,6 +6,7 @@ abstract type IntegrationRule end
 
 include("src/newtoncotes.jl")
 include("src/gaussianquadrature.jl")
+include("src/generalizedgauss.jl")
 include("src/convergence.jl")
 
 function integrate(f::Function, a::F, b::F, rule::IntegrationRule) where {F}
@@ -14,5 +15,6 @@ end
 
 export Midpoint, Trapezoidal, Simpson, CompositeNewtonCotes
 export GaussLegendre
+export GeneralizedGaussian
 export estimate_convergence_order
 end

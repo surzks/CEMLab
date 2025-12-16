@@ -55,7 +55,7 @@ This integral equation is suited for problems such as capacitance calculations, 
 
 As an alternative to solving Laplace's equation in the entire domain, we can calculate the charges $\rho_s$ on the conductors by solving the integral equation
 
-$$\frac{1}{\varepsilon_0} \mathcal{V}\rho = \gamma_\text{D}\phi_\text{spec}(\bm r)\,. $$
+$$\frac{1}{\varepsilon_0} \mathcal{V}\rho = \gamma_\text{D}\phi(\bm r)\,. $$
 
 In the 2D case the surface integral reduces to a line integral, that is
 $$-\frac{1}{2\pi \varepsilon_0} \int_{\Gamma } \rho(\bm r')\ln |\bm r - \bm r'| d\ell' = \phi_\text{spec}(\bm r)\,. $$
