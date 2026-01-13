@@ -64,23 +64,23 @@ We will focus on a rectangular waveguide structure and analyze its modal propert
 
 
 The Curl-curl equation in $\Omega$ and can be expressed as
-$$\nabla\times (\mu^{-1} \nabla\times \bm E) = -k^2 \bm E,$$
-where $\bm E$ is the electric field, $k$ the wave number related to the frequency of the wave, and $\mu$ the permeability in $\Omega$.
+$$\nabla\times (\mu^{-1} \nabla\times \bm E_\text{t}) = -k^2 \bm E_\text{t},$$
+where $\bm E_\text{t}$ is the electric field, $k$ the wave number related to the frequency of the wave, and $\mu$ the permeability in $\Omega$.
 For a rectangular waveguide with a PEC boundary $\Gamma$, we know that for the electric field, the tangential component must vanish on the boundary, leading 
-$$ \hat{\bm n} \times (\mu^{-1}\bm E)  = 0 \quad \text{on } \Gamma,$$
+$$ \hat{\bm n} \times (\mu^{-1}\bm E_\text{t})  = 0 \quad \text{on } \Gamma,$$
 where $\hat{\bm n}$ is the outward normal vector on the boundary.
 
 ## Weak Formulation
 To derive the weak formulation we start by multiplying the PDE by a test function $\bm w_i$ and integrate over the domain $\Omega$:
-$$\int_\Omega (\nabla\times (\mu^{-1} \nabla \times \bm E)) \cdot \bm w_i \,\text{d}\Omega= -k^2 \int_\Omega \bm E \cdot \bm w_i\,\text{d}\Omega$$
+$$\int_\Omega (\nabla\times (\mu^{-1} \nabla \times \bm E_\text{t})) \cdot \bm w_i \,\text{d}\Omega= -k^2 \int_\Omega \bm E_\text{t} \cdot \bm w_i\,\text{d}\Omega$$
 Next we use the vector identity
 $$\nabla \cdot (\bm A \times \bm B) = \bm B \cdot (\nabla \times \bm A) - \bm A \cdot (\nabla \times \bm B)$$
 and Gauss's theorem 
 $$\int_\Omega \nabla\cdot \bm F \, d\Omega = \int_{\partial \Omega} \bm F \cdot \bm n \, d\Gamma,$$
 to obtain
-$$\int_\Omega \mu^{-1}(\nabla \times \bm w_i) \cdot (\nabla \times \bm E) \, d\Omega - \int_{\partial \Omega} (\bm n \times \bm E) \cdot (\nabla \times \bm w_i) \, d\Gamma = -k^2 \int_\Omega \bm E \cdot \bm w_i \, d\Omega.$$
+$$\int_\Omega \mu^{-1}(\nabla \times \bm w_i) \cdot (\nabla \times \bm E_\text{t}) \, d\Omega - \int_{\partial \Omega} (\bm n \times \bm E_\text{t}) \cdot (\nabla \times \bm w_i) \, d\Gamma = -k^2 \int_\Omega \bm E_\text{t} \cdot \bm w_i \, d\Omega.$$
 with the boundary integral vanishing due to the PEC boundary condition, we arrive at the weak form:
-$$\int_\Omega \mu^{-1}(\nabla \times \bm w_i) \cdot (\nabla \times \bm E) \, d\Omega = -k^2 \int_\Omega \bm E \cdot \bm w_i \, d\Omega.$$
+$$\int_\Omega \mu^{-1}(\nabla \times \bm w_i) \cdot (\nabla \times \bm E_\text{t}) \, d\Omega = -k^2 \int_\Omega \bm E_\text{t} \cdot \bm w_i \, d\Omega.$$
 
 ## Finite Element Discretization
 We expand the field variable $\bm u$ using vectorial shape functions $\bm N_j$ defined on triangular elements:

@@ -1,4 +1,4 @@
-# Finite Element Method-2D
+# Finite Element Method - Laplace Equation
 
 ## Introduction
 In this lab we will revisit the finite element method (FEM) for a two-dimensional problem. 
