@@ -26,3 +26,56 @@ for n in [1, 2, 4, 8]
         "Composite Midpoint Rule ($n subintervals): F = $F_compmidpoint, Error = $relerror_compmidpoint",
     )
 end
+
+## Alt + Shift + Enter
+# Problem 9
+f(x) = x^2 * cos(10 * x^2)
+F_analytic = -0.03925821571649867
+
+for n in 2:4
+    intrule_gausslegendre = GaussLegendre(order=n)
+    F_gausslegendre = intrule_gausslegendre(f,a,b)
+    relerror_gausslegendre = abs(F_gausslegendre - F_analytic)
+    println(
+        "Guass-Legendre Quadrature (order $n): F = $F_gausslegendre, Error = $relerror_gausslegendre",
+    )
+end
+##
+
+# Problem 11
+
+f(x) = x^2 * cos(10 * x^2)
+F_analytic = -0.03925821571649867
+hs = [0.1, 0.05, 0.025, 0.0125, 0.00625]
+
+Ih_compmidpoint = Float64[]
+Ih_compsimpson = Float64[]
+Ih_gausslegendre = Float64[]
+
+for h in hs
+    n_subintervals = Int( (b-a) / h)
+    @show n_subintervals
+
+    intrule_compmidpoint = CompositeNewtonCotes(n_subintervals, Midpoint())
+    F_compmidpoint = intrule_compmidpoint(f,a,b)
+    push!(Ih_compmidpoint, F_compmidpoint)
+
+    intrule_compsimpson = CompositeNewtonCotes(n_subintervals, Simpson())
+    F_compsimpson = intrule_compsimpson(f, a, b)
+    push!(Ih_compsimpson, F_compsimpson)
+
+    order_gauss = n_subintervals
+    intrule_gausslegendre = GaussLegendre(order = order_gauss)
+    F_gausslegendre = intrule_gausslegendre(f, a, b)
+    push!(Ih_gausslegendre,  F_gausslegendre)
+end
+
+p_compmidpoint = estimate_convergence_order(Ih_compmidpoint, hs)
+p_compsimpson = estimate_convergence_order(Ih_compsimpson, hs)
+p_gausslegendre = estimate_convergence_order(Ih_gausslegendre, hs)
+
+println("Estimated convergence orders: ")
+println("Composite Midpoint Rule: p ≈ ", p_compmidpoint) 
+println("Composite Simpson Rule: p ≈ ", p_compsimpson) 
+println("GaussLegendre Quadrature: p ≈ ", p_gausslegendre) 
+
