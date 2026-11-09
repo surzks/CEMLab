@@ -35,6 +35,46 @@ The functor computes the integral of a function `f` over an interval `[-1, 1]` u
 
 ## Problem 7: Derive the Mapping for a General Interval
 Derive the affine transformation that maps the interval $[-1, 1]$ to an arbitrary interval $[a, b]$.
+### Solution
+*Assume a linear relation of the form:*
+$$x = \alpha \xi + \beta$$
+*where $\xi \in [-1, 1]$ is the reference variable, $x \in [a, b]$ is the target variable, $\alpha, \beta$ are constants to be determined.
+We require:*
+$$
+\begin{cases}
+\xi = -1 \implies x = a, \\
+\xi = 1 \implies x = b.
+\end{cases}
+$$
+*Substituting these gives:*
+$$
+\begin{aligned}
+a &= -\alpha + \beta, \\
+b &= \alpha + \beta.
+\end{aligned}
+$$
+*Add the two equations:*
+$$a + b = 2\beta \implies \boxed{\beta = \frac{a + b}{2}}.$$
+
+*Subtract the first from the second:*
+
+$$b - a = 2\alpha \implies \boxed{\alpha = \frac{b - a}{2}}.$$
+$$\boxed{x = \frac{b - a}{2}\,\xi + \frac{a + b}{2}}$$
+
+*To express $\xi$ in terms of $x$:*
+
+$$\boxed{\xi = \frac{2x - (a + b)}{b - a}}.$$
+
+*When changing variables in an integral:*
+
+$$dx = \frac{b - a}{2}\, d\xi.$$
+
+*Therefore:*
+
+$$
+\int_a^b f(x)\,dx
+= \int_{-1}^{1} f\!\left(\frac{b - a}{2}\xi + \frac{a + b}{2}\right) \frac{b - a}{2}\, d\xi.
+$$
 
 ## Problem 8: Gauss-Legendre Quadrature on a General Interval
 Extend your implementation of the Gauss-Legendre quadrature to handle integration over an arbitrary interval `[a, b]`. Modify the functor `GaussLegendre` such that it takes the function `f` and the interval `[a, b]` as parameters and performs the necessary change of variables to map the interval `[-1, 1]` to `[a, b]`.

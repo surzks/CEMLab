@@ -25,3 +25,26 @@ for n in [2, 4, 8, 16]
     relerror_simpson = abs(F_simpson - F_analytic) / abs(F_analytic)
     println("Composite Simpson's Rule ($n subintervals): Error = $relerror_simpson")
 end
+
+##
+# Homework 4
+for n in [2, 4, 8, 16]
+    intrule_gausslegendre = GaussLegendre(; order=n)
+    F_gausslegendre = intrule_gausslegendre(f, a, b)
+    relerror_gausslegendre = abs(F_gausslegendre - F_analytic) / abs(F_analytic)
+    println("Gauss-Legendre Quadrature (order $n): Error = $relerror_gausslegendre")
+end
+
+##
+# Homework 5
+f(x) = log(x)
+a = 0.0
+b = 1.0
+F_analytic = -1.0
+
+for n in [2, 4, 8, 16, 32, 64]
+    intrule_gausslegendre = GaussLegendre(; order=n)
+    F_gausslegendre = intrule_gausslegendre(f, a, b)
+    relerror_gausslegendre = abs(F_gausslegendre - F_analytic) / abs(F_analytic)
+    println("Gauss-Legendre Quadrature (order $n): Error = $relerror_gausslegendre")
+end

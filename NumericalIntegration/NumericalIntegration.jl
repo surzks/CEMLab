@@ -14,4 +14,6 @@ end
 
 export Midpoint, Trapezoidal, Simpson, CompositeNewtonCotes
 export estimate_convergence_order
+export GaussLegendre
+
 end
