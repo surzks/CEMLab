@@ -18,5 +18,8 @@ export meshline, numvertices
 export estimate_convergence_order
 
 # FEM1D functions
+export Laplace
+export lagrangec0d1
+export assemble
 
 end
