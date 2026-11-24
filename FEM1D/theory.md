@@ -133,7 +133,7 @@ u(x) =
 \begin{cases}
    C_\text{DL} + (C_\text{DR} - C_\text{DL}) x \quad & x < w_\text{c} - w_\text{r} \\
    C_\text{DL} + \frac{C_\text{DR} - C_\text{DL}}{1/\varepsilon_w} ( w_\text{c} - w_\text{r} + \frac{x - (w_\text{c} - w_\text{r})}{\varepsilon_w} ) \quad & w_\text{c} - w_\text{r} \leq x < w_\text{c} + w_\text{r} \\
-   C_\text{DR} + (C_\text{DL} - C_\text{DR}) (w_\text{c} - w_\text{r} + \frac{2w_\text{r}}{\varepsilon_w} + x - (w_\text{c} + w_\text{r})) \quad & x \geq w_\text{c} + w_\text{r}
+   C_\text{DR} + (C_\text{DR} - C_\text{DL}) (w_\text{c} - w_\text{r} + \frac{2w_\text{r}}{\varepsilon_w} + x - (w_\text{c} + w_\text{r})) \quad & x \geq w_\text{c} + w_\text{r}
 \end{cases}
 $$
 

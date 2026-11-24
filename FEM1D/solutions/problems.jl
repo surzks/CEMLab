@@ -62,22 +62,23 @@ plt = plot(
 
 ## Problem 10
 # Convergence Study
-function analyticalsolution(C_DL, C_DR, x; ε = 4.0, window_radius = 0.2, window_center=0.5)
+function analyticalsolution(C_DL, C_DR, x; ε=1.0, window_radius=0.2, window_center=0.5)
     # Region I
     if x < window_center - window_radius
         return C_DL + (C_DR - C_DL) * (x)
-    # Region II
+        # Region II
     elseif window_center - window_radius <= x <= window_center + window_radius
-        return C_DL + 
-            (C_DR - C_DL) / (1 / ε) *
-            (window_center  - window_radius + (x  - (window_center - window_radius)) / ε)
+        return C_DL +
+               (C_DR - C_DL) / (1 / ε) *
+               (window_center - window_radius + (x - (window_center - window_radius)) / ε)
+        # Region III
     else
         return C_DL +
-            (C_DR - C_DL) * (
-                (window_center - window_radius) + 
-                (2 + window_radius) / ε +
-                (x - (window_center + window_radius))
-            )
+               (C_DR - C_DL) * (
+            (window_center - window_radius) +
+            (2 * window_radius) / ε +
+            (x - (window_center + window_radius))
+        )
     end
 end
 
