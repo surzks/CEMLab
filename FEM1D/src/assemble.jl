@@ -19,6 +19,12 @@ struct LagrangeBasis{D,C,NF,M,F,P} <: Space
     pos::Vector{P}
 end
 
+function LagrangeBasis{D,C,NF}(
+    mesh::M, fns::Vector{Vector{Shape{F}}}, pos::Vector{P}
+) where {D,C,NF,M,F,P}
+    return LagrangeBasis{D,C,NF,M,F,P}(mesh, fns, pos)
+end
+
 scalartype(::Vector{SVector{D,F}}) where {D, F} = F
 numshapefns_per_element(::LagrangeBasis{D,C,NF,M,F,P}) where {D,C,NF,M,F,P} = NF
 
@@ -42,7 +48,8 @@ function lagrangec0d1(Ω::LineMesh{1,I,F}) where {I,F}
         pos[NF * segmentid] = x2
     end
 
-    return LagrangeBasis{1,0,NF}(Ω, fns, pos)
+    #return LagrangeBasis{1,0,NF}(Ω, fns, pos)
+    return LagrangeBasis{1,0,NF,typeof(Ω),F,eltype(pos)}(Ω, fns, pos)
 end
 
 # Problem 6
@@ -53,7 +60,7 @@ integrand(op::Laplace, λi, λj, x1, x2) =
 
 function cellinterations!(segment, Se, op::Operator, v::Space, u::Space)
     x1 = v.mesh.vertices[segment[1]][1]
-    x2 = v.mesh.vertices[segment[2]][2]
+    x2 = v.mesh.vertices[segment[2]][1]
 
     for i in 1:numshapefns_per_element(v)
         for j in 1:numshapefns_per_element(u)

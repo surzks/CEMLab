@@ -12,7 +12,8 @@ using LinearAlgebra
 include("src/assemble.jl")
 
 # Meshing functions
-export meshline, numvertices
+export meshline 
+export numvertices
 
 # NumericalIntegration functions
 export estimate_convergence_order
